@@ -1,0 +1,6 @@
+tmp
+*.json
+.vscode/
+coverage.out
+*.exe
+cloned-repos/

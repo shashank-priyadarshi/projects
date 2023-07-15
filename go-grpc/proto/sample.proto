@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+// path to generated proto files
+option go_package="./";
+// package name for generated go proto code
+package greet_service;
+
+message RequestMessage {
+    string name=1;
+}
+
+message ResponseMessage{
+    string message=1;
+}
+
+service GreetService{
+    rpc SayHello(NoParams) returns (ResponseMessage);
+}
+
+message NoParams{};

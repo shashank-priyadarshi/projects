@@ -1,0 +1,32 @@
+syntax = "proto3";
+option go_package = "./plugin_proto";
+package plugin_proto;
+
+message DatabaseRequest {
+  string name = 1;
+  string connection_string = 2;
+  string query = 3;
+  string data = 4;
+}
+
+message DatabaseResponse {
+  repeated string data = 1;
+  string error_message = 2;
+}
+
+service DatabaseService {
+  rpc GetData(DatabaseRequest) returns (DatabaseResponse) {}
+}
+
+message PluginRequest {
+  string name = 1;
+}
+
+message PluginResponse {
+  string status = 1;
+  string error_message = 2;
+}
+
+service PluginService{
+  rpc Trigger(PluginRequest) returns (PluginResponse) {}
+}
