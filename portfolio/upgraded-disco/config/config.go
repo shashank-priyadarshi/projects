@@ -47,9 +47,9 @@ func FetchConfig() Configuration {
 	os.Setenv("SECRET_KEY", "123")
 	if strings.EqualFold("0", os.Getenv("LOCAL")) {
 		return Configuration{
-			SQLURI:         "mysql://user:mysqlpass@mysql:3306/db",
+			SQLURI:         "mysql://localhost:3306/db",
 			MongoURI:       "mongodb://localhost:27017/database",
-			DBNAME:         "database",
+			DBNAME:         "test",
 			SERVERORIGIN:   "*",
 			GITHUBTOKEN:    os.Getenv("GH"),
 			GITHUBUSERNAME: "shashank-priyadarshi",
