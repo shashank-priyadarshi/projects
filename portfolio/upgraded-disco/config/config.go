@@ -42,9 +42,6 @@ type Collections struct {
 }
 
 func FetchConfig() Configuration {
-	os.Setenv("SETUP", "0")
-	os.Setenv("GH", "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")
-	os.Setenv("SECRET_KEY", "123")
 	if strings.EqualFold("0", os.Getenv("SETUP")) {
 		return Configuration{
 			SQLURI:         "root@tcp(localhost:3306)/db",
