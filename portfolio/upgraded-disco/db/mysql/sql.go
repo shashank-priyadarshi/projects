@@ -110,13 +110,13 @@ func resetPassword(db *sql.DB, passwordID int, currPassword string) (err error) 
 }
 
 func fetchPassword(db *sql.DB, passwordID int) (password string, err error) {
-	row := db.QueryRow("SELECT password FROM passwords WHERE id = ?", passwordID)
+	row := db.QueryRow("SELECT password FROM passwords WHERE password_id = ?", passwordID)
 	err = row.Scan(&password)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return "", errors.New("password does not exist")
 		} else {
-			return "", errors.New("error while retrieving password")
+			return "", fmt.Errorf("error while retrieving password: %v", err)
 		}
 	}
 	return
@@ -152,9 +152,9 @@ func (user *User) EntryPoint() (token string, err error) {
 		var passwordID int
 		var createdAt string
 
-		err := rows.Scan(&id, &name, &email, &username, &createdAt, &passwordID)
+		err := rows.Scan(&id, &name, &email, &username, &passwordID, &createdAt)
 		if err != nil {
-			return "", errors.New("error while retrieving user data")
+			return "", fmt.Errorf("error while retrieving user data: %v", err)
 		}
 
 		if user.Action == 1 {
