@@ -42,13 +42,13 @@ type Collections struct {
 }
 
 func FetchConfig() Configuration {
-	os.Setenv("LOCAL", "0")
-	os.Setenv("GH", "")
+	os.Setenv("SETUP", "0")
+	os.Setenv("GH", "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")
 	os.Setenv("SECRET_KEY", "123")
-	if strings.EqualFold("0", os.Getenv("LOCAL")) {
+	if strings.EqualFold("0", os.Getenv("SETUP")) {
 		return Configuration{
-			SQLURI:         "mysql://localhost:3306/db",
-			MongoURI:       "mongodb://localhost:27017/database",
+			SQLURI:         "root@tcp(localhost:3306)/db",
+			MongoURI:       "mongodb://localhost:27017/test",
 			DBNAME:         "test",
 			SERVERORIGIN:   "*",
 			GITHUBTOKEN:    os.Getenv("GH"),

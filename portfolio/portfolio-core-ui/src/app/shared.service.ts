@@ -16,7 +16,7 @@ export class SharedService {
     });
 
     return this.http
-      .get('https://api.ssnk.in/' + endpoint, {
+      .get('http://localhost:8085/' + endpoint, {
         headers: headers,
       })
       .pipe(
@@ -33,7 +33,7 @@ export class SharedService {
     });
 
     return this.http
-      .post('https://api.ssnk.in/' + endpoint, formData, {
+      .post('http://localhost:8085/' + endpoint, formData, {
         headers: headers,
       })
       .pipe(
