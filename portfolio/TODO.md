@@ -4,6 +4,7 @@
    - Setup script for configuring local setup, and running frontend and backend services
    - Merge actions and charts, charts open as pop-ups on hover instead of in page rendering
    - Remove todos
+   - Remove todos and biodata and endpoints
 2. PHASE-2:
    -
    - Folder structure and expandable folder structure from GitHub repository
