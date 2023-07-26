@@ -3,6 +3,7 @@
    - Dev setup for portfolio codebase
    - Setup script for configuring local setup, and running frontend and backend services
    - Merge actions and charts, charts open as pop-ups on hover instead of in page rendering
+   - Remove todos
 2. PHASE-2:
    -
    - Folder structure and expandable folder structure from GitHub repository

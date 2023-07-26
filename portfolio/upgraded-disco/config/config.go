@@ -14,9 +14,9 @@ type Configuration struct {
 	MongoURI       string
 	DBNAME         string
 	SERVERORIGIN   string
+	ALLOWEDORIGIN  string
 	GITHUBTOKEN    string
 	GITHUBUSERNAME string
-	ALLOWEDORIGIN  string
 	SECRETKEY      []byte
 	Ports
 	NewRelic
@@ -86,9 +86,9 @@ func FetchConfig() Configuration {
 		SECRETKEY:      fetchSecretKey(),
 		Ports: Ports{
 			Server:   os.Getenv("SERVER_PORT"),
-			Todos:    os.Getenv("TODOS"),
-			GitHub:   os.Getenv("GITHUB"),
-			Schedule: os.Getenv("SCHEDULE"),
+			Todos:    os.Getenv("TODOS_PORT"),
+			GitHub:   os.Getenv("GITHUB_PORT"),
+			Schedule: os.Getenv("SCHEDULE_PORT"),
 		},
 		Collections: Collections{
 			BIODATA:    os.Getenv("BIO"),
