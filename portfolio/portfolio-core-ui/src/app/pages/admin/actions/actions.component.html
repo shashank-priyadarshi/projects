@@ -8,14 +8,12 @@
 <div class="container">
   <div style="display: flex; justify-content: center">
     <mat-card class="container__card"
-      >
-<!--   provide three stacked lists of actions, charts, plugins  -->
-      <mat-card-header class="card-header">actions</mat-card-header>
+      ><mat-card-header class="card-header">actions</mat-card-header>
       <mat-card-content class="sub-block">
-        <ul *ngFor="let item of actions; index as i">
+        <ul *ngFor="let item of plugins; index as i">
           <li>
             {{ item.name }}
-            <button (click)="trigger(actions[i].source)">Trigger</button>
+            <button (click)="trigger(plugins[i].endpoint)">Trigger</button>
           </li>
         </ul>
       </mat-card-content>

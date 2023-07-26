@@ -127,7 +127,7 @@ export class AboutComponent extends PagesService {
       newsletter: scheduleForm.newsletter,
     };
     this.scheduleForm.reset();
-    return this.postData('schedule', schedule).subscribe((data) => {
+    return this.postData('/schedule', schedule).subscribe((data) => {
       if (data instanceof CustomError) {
         return data;
       }

@@ -11,12 +11,12 @@ export class SharedService {
   constructor(private http: HttpClient) { }
 
   protected fetchData(endpoint: string): Observable<any> {
-    const headers = new HttpHeaders({
+    let headers = new HttpHeaders({
       'Referrer-Policy': 'no-referrer',
     });
 
     return this.http
-      .get('https://api.ssnk.in/' + endpoint, {
+      .get('http://localhost:8085/' + endpoint, {
         headers: headers,
       })
       .pipe(
@@ -27,13 +27,13 @@ export class SharedService {
   }
 
   protected postData(endpoint: string, formData: any): Observable<any> {
-    const headers = new HttpHeaders({
+    let headers = new HttpHeaders({
       'Referrer-Policy': 'no-referrer',
       'Content-Type': 'text/plain; charset=utf-8',
     });
 
     return this.http
-      .post('https://api.ssnk.in/' + endpoint, formData, {
+      .post('http://localhost:8085/' + endpoint, formData, {
         headers: headers,
       })
       .pipe(

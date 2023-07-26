@@ -110,7 +110,7 @@ func resetPassword(db *sql.DB, passwordID int, currPassword string) (err error) 
 }
 
 func fetchPassword(db *sql.DB, passwordID int) (password string, err error) {
-	row := db.QueryRow("SELECT password FROM passwords WHERE password_id = ?", passwordID)
+	row := db.QueryRow("SELECT password FROM passwords WHERE id = ?", passwordID)
 	err = row.Scan(&password)
 	if err != nil {
 		if err == sql.ErrNoRows {
