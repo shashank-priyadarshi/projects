@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+
+  go-dev:
+    build:
+      context: ./upgraded-disco
+      dockerfile: Dockerfile
+    environment:
+      - GH:${GH}
+    volumes:
+      - ./upgraded-disco:/app
+#      - /app/vendor
+    networks:
+      - common
+    ports:
+      - "10000:10000"
+    command: ["air"]
+  angular-dev:
+    build:
+      context: ./portfolio-core-ui
+      dockerfile: Dockerfile
+    volumes:
+      - ./portfolio-core-ui:/app
+      - /app/node_modules
+    networks:
+      - common
+    ports:
+      - "4200:4200"
+    command: npm run start -- --host 0.0.0.0
+
+networks:
+  common:
+    name: common
