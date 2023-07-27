@@ -43,9 +43,10 @@ type Collections struct {
 
 func FetchConfig() Configuration {
 	if strings.EqualFold("0", os.Getenv("SETUP")) {
+		logger.Info().Msg("Running portfolio setup in dev environment")
 		return Configuration{
-			SQLURI:         "root@tcp(localhost:3306)/db",
-			MongoURI:       "mongodb://localhost:27017/test",
+			SQLURI:         "root@tcp(mysql:3306)/db",
+			MongoURI:       "mongodb://mongodb:27017/test",
 			DBNAME:         "test",
 			SERVERORIGIN:   "*",
 			GITHUBTOKEN:    os.Getenv("GH"),

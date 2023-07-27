@@ -19,11 +19,16 @@ fi
 echo "Running setup in $(if [[ $DEV_SETUP -eq 0 ]]; then echo development; else echo production; fi) mode"
 
 # Check Go version
-go_version=$(go version | awk -F '[ .]' '{print $3 $4}' | sed 's/go//')
-if [[ $go_version -lt 120 ]]; then
-  echo "Go version must be greater than or equal to 1.20. Current version: $(go version)"
-  exit 1
-fi
+#go_version=$(go version | awk -F '[ .]' '{print $3 $4}' | sed 's/go//')
+#if [[ $go_version -lt 120 ]]; then
+#  echo "Go version must be greater than or equal to 1.20. Current version: $(go version)"
+#  exit 1
+#fi
 
-cd upgraded-disco && go mod tidy && go get -u && git commit -am "updated dep packages" && export GH=$GITHUB_TOKEN && export SETUP=$DEV_SETUP && gnome-terminal -- bash -c "air; if [ \$? -ne 0 ]; then exit; fi"
-cd ../portfolio-core-ui && npm i --f --legacy-peer-deps && gnome-terminal -- bash -c "npm run start; if [ \$? -ne 0 ]; then exit; fi" && gnome-terminal -- bash -c "google-chrome http://localhost:4200; if [ \$? -ne 0 ]; then exit; fi"
+echo "export GH=$GITHUB_TOKEN" > ./tmp-vars.sh
+echo "export SETUP=$DEV_SETUP" >> ./tmp-vars.sh
+chmod +x tmp-vars.sh
+gnome-terminal -- bash -c "ls && source ./tmp-vars.sh && rm ./tmp-vars.sh && docker-compose up -d; if [ \$? -ne 0 ]; then exit; fi"
+
+#cd upgraded-disco && go mod tidy && go get -u && git commit -am "updated dep packages" && export GH=$GITHUB_TOKEN && export SETUP=$DEV_SETUP && gnome-terminal -- bash -c "air; if [ \$? -ne 0 ]; then exit; fi"
+#cd ../portfolio-core-ui && npm i --f --legacy-peer-deps && gnome-terminal -- bash -c "npm run start; if [ \$? -ne 0 ]; then exit; fi" && gnome-terminal -- bash -c "google-chrome http://localhost:4200; if [ \$? -ne 0 ]; then exit; fi"
