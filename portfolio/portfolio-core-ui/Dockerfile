@@ -3,9 +3,9 @@ FROM node:latest as node
 WORKDIR /app
 #COPY . .
 #RUN npm install
+#RUN npm i --f --legacy-peer-deps
 #RUN npm run build --prod
 COPY package.json package-lock.json ./
-RUN npm i --f --legacy-peer-deps
 COPY . .
 EXPOSE 4200
 

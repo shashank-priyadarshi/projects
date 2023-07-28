@@ -7,12 +7,18 @@ import (
 	"server/ghintegration"
 	"server/server"
 	"server/todos"
+	"strings"
 	"sync"
 
 	logger "github.com/rs/zerolog/log"
 )
 
 func main() {
+	if strings.EqualFold("0", os.Getenv("SETUP")) {
+		logger.Info().Msg("Running portfolio setup in dev environment")
+	} else {
+		logger.Info().Msg("Running portfolio setup in prod environment")
+	}
 	generateSigningKey()
 
 	servers := []Server{

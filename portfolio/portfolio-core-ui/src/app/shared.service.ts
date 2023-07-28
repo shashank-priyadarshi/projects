@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
 import { CustomError } from 'src/assets/models/custom-error.model';
 import { Game } from 'src/assets/models/models.interface';
+import {environment } from "../environments/environment";
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class SharedService {
     });
 
     return this.http
-      .get('https://api.ssnk.in/' + endpoint, {
+      .get(environment.apiURL + endpoint, {
         headers: headers,
       })
       .pipe(
@@ -33,7 +34,7 @@ export class SharedService {
     });
 
     return this.http
-      .post('https://api.ssnk.in/' + endpoint, formData, {
+      .post(environment.apiURL + endpoint, formData, {
         headers: headers,
       })
       .pipe(

@@ -11,8 +11,8 @@ RUN go install github.com/cosmtrek/air@latest
 # Copy app files
 COPY . .
 # Build app
-RUN #go build -o app ./
-EXPOSE 10000
+#RUN go build -o app ./
+#EXPOSE 10000
 
 #FROM alpine:3.15 as production
 ## Add certificates

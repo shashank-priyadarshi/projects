@@ -1,20 +1,19 @@
 version: "3.8"
 services:
-
   go-dev:
+    container_name: go-dev
     build:
       context: ./upgraded-disco
       dockerfile: Dockerfile
-    environment:
-      - GH:${GH}
     volumes:
       - ./upgraded-disco:/app
+      - ./tmp-vars.sh:/app/tmp-vars.sh
 #      - /app/vendor
     networks:
       - common
     ports:
-      - "10000:10000"
-    command: ["air"]
+      - "8085:8085"
+    command: ["/bin/bash", "-c", "source /app/tmp-vars.sh && air"]
   angular-dev:
     build:
       context: ./portfolio-core-ui
