@@ -1,10 +1,12 @@
 1. PHASE-1:
    -
-   - Dev setup for portfolio codebase
-   - Setup script for configuring local setup, and running frontend and backend services
-   - Merge actions and charts, charts open as pop-ups on hover instead of in page rendering
-   - Remove todos
-   - Remove todos and biodata and endpoints
+   - Dev setup for portfolio codebase: DONE
+   - Merge actions and charts: DONE
+   - Remove todos: DONE
+   - Revamp home page, make it static: IN PROGRESS
+   - Remove todos and biodata endpoints: TODO
+   - Charts open as pop-ups on hover instead of in page rendering: TODO
+   - Setup script for configuring local setup, and running frontend and backend services: TODO
 2. PHASE-2:
    -
    - Folder structure and expandable folder structure from GitHub repository

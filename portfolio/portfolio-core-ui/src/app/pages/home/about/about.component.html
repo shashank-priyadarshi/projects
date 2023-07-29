@@ -1,41 +1,22 @@
 <div class="container">
   <mat-card class="container__card">
+    <mat-card-header><h2>Send a message:</h2></mat-card-header>
+
     <mat-card-content class="container__card__content">
-      <mat-card-header class="container__card__content__header">
-        About Me:
-      </mat-card-header>
-      <div class="container__card__content__body">
-        <p>
-          I am a Full Stack Web Developer based in India.<br />
-          Graduated in the year 2021, and since, have worked full time as a web
-          dev.
-        </p>
-        <p>
-          Outside work, I mostly spend my time tinkering with software and
-          electronics. I also like to learn new languages, read books, and play
-          bad chess.
-        </p>
-        <div>
+      <div>
+        <div style="display: flex;flex-direction: column;align-items: center;">
           <p>Send me a message if you want to:</p>
           <ul>
-            <li>Collaborate on a web development project,</li>
-            <li>Schedule a meeting,</li>
-            <li>Play chess, or</li>
+            <li>Interview me for a job opening,</li>
+            <li>Collaborate on a software development project,</li>
+            <li>Play a round of chess,</li>
+            <li>Read a book and discuss, or</li>
             <li>Learn a new language together.</li>
           </ul>
           <p>
-            You can also check out other links in the footer for articles
-            related to all things web dev(mostly Angular and Go).
+            Also, be sure to check out other links in the footer for articles related to all things web dev - mostly Angular and Go.
           </p>
-        </div>
       </div>
-    </mat-card-content>
-
-    <mat-card-content class="container__card__content">
-      <mat-card-header class="container__card__content__header"
-        >Send a message:
-      </mat-card-header>
-      <div class="message_container">
         <form
           [formGroup]="scheduleForm"
           autocomplete="off"
