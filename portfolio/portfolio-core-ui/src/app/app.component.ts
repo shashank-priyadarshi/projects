@@ -14,7 +14,7 @@ export class AppComponent extends SharedService implements OnInit {
   //   super();
   // }
   ngOnInit() {
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     this.fetchGraphData();
     this.welcome();
   }
