@@ -18,8 +18,6 @@ func routes(app *newrelic.Application) *mux.Router {
 	r := mux.NewRouter()
 	// r.Use(middleware.ExternalOriginMiddleware)
 	// r.Use(middleware.AddResponseHeaders)
-	// TODO: remove
-	r.HandleFunc(newrelic.WrapHandleFunc(app, "/biodata", returnBiodata)).Methods("GET")
 	// TODO: redo the GitHub integration plugin, decide what data to return for github activity graph
 	r.HandleFunc(newrelic.WrapHandleFunc(app, "/graphdata", returnGraphData)).Methods("GET")
 
@@ -32,8 +30,6 @@ func routes(app *newrelic.Application) *mux.Router {
 
 	// TODO: more sensible name, decide what data to return
 	r.HandleFunc(newrelic.WrapHandleFunc(app, "/githubdata", returnGitHubData)).Methods("POST").Handler(routeHandler.AuthMiddleware(http.HandlerFunc(returnGitHubData)))
-	// TODO: remove
-	r.HandleFunc(newrelic.WrapHandleFunc(app, "/todos", todos)).Methods("POST").Handler(routeHandler.AuthMiddleware(http.HandlerFunc(todos)))
 	// TODO: will accept plugin names to trigger
 	r.HandleFunc(newrelic.WrapHandleFunc(app, "/trigger", triggerPlugin)).Methods("POST").Handler(routeHandler.AuthMiddleware(http.HandlerFunc(triggerPlugin)))
 

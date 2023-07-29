@@ -24,7 +24,6 @@ type Configuration struct {
 }
 type Ports struct {
 	Server   string
-	Todos    string
 	GitHub   string
 	Schedule string
 }
@@ -34,9 +33,7 @@ type NewRelic struct {
 	LogForward  bool
 }
 type Collections struct {
-	BIODATA    string
 	GITHUBDATA string
-	TODOS      string
 	GRAPHDATA  string
 	SCHEDULE   string
 }
@@ -54,14 +51,11 @@ func FetchConfig() Configuration {
 			SECRETKEY:      fetchSecretKey(),
 			Ports: Ports{
 				Server:   "8085",
-				Todos:    "8086",
-				GitHub:   "8087",
-				Schedule: "8088",
+				GitHub:   "8086",
+				Schedule: "8087",
 			},
 			Collections: Collections{
-				BIODATA:    "b",
 				GITHUBDATA: "g",
-				TODOS:      "t",
 				GRAPHDATA:  "gr",
 				SCHEDULE:   "s",
 			},
@@ -83,14 +77,11 @@ func FetchConfig() Configuration {
 		SECRETKEY:      fetchSecretKey(),
 		Ports: Ports{
 			Server:   os.Getenv("SERVER_PORT"),
-			Todos:    os.Getenv("TODOS_PORT"),
 			GitHub:   os.Getenv("GITHUB_PORT"),
 			Schedule: os.Getenv("SCHEDULE_PORT"),
 		},
 		Collections: Collections{
-			BIODATA:    os.Getenv("BIO"),
 			GITHUBDATA: os.Getenv("GITHUB"),
-			TODOS:      os.Getenv("TODOS"),
 			GRAPHDATA:  os.Getenv("GRAPH"),
 			SCHEDULE:   os.Getenv("SCHEDULE"),
 		},

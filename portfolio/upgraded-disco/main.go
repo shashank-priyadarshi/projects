@@ -6,7 +6,6 @@ import (
 	"os"
 	"server/ghintegration"
 	"server/server"
-	"server/todos"
 	"strings"
 	"sync"
 
@@ -23,7 +22,6 @@ func main() {
 
 	servers := []Server{
 		&PrimaryServer{},
-		&TodosServer{},
 		&GHIntegrationServer{},
 	}
 	as := &AbstractServer{}
@@ -62,10 +60,6 @@ func (as *AbstractServer) StartServers(servers []Server) {
 func (ps *PrimaryServer) StartServer() {
 	// implementation for starting server1
 	server.StartServer()
-}
-
-func (ts *TodosServer) StartServer() {
-	todos.StartServer()
 }
 
 func (ghis *GHIntegrationServer) StartServer() {
