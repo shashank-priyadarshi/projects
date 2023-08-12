@@ -14,6 +14,8 @@ services:
     ports:
       - "8085:8085"
     command: ["/bin/bash", "-c", "source /app/tmp-vars.sh && air"]
+    restart: always
+    
   angular-dev:
     build:
       context: ./portfolio-core-ui
@@ -26,6 +28,7 @@ services:
     ports:
       - "4200:4200"
     command: npm run start -- --host 0.0.0.0
+    restart: always
 
 networks:
   common:

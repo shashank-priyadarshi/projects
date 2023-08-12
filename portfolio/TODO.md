@@ -1,12 +1,13 @@
-1. PHASE-1:
+1. PHASE-1: IN PROGRESS
    -
    - Dev setup for portfolio codebase: DONE
    - Merge actions and charts: DONE
    - Remove todos: DONE
-   - Revamp home page, make it static: IN PROGRESS
-   - Remove todos and biodata endpoints: TODO
-   - Charts open as pop-ups on hover instead of in page rendering: TODO
+   - Revamp home page, make it static: DONE
+   - Remove todos and biodata endpoints: DONE
    - Setup script for configuring local setup, and running frontend and backend services: TODO
+   - Configure development and production env Dockerfiles for portfolio: TODO
+   - Charts open as pop-ups on hover instead of in page rendering: TODO
 2. PHASE-2:
    -
    - Folder structure and expandable folder structure from GitHub repository
