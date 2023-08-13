@@ -1,6 +1,6 @@
 # Project Ideas
 
-- Text based read log
+- Markdown based record log
 - Integrated note taking
 - URL storage & renderer
 - RESTful API with Authentication and Authorization
@@ -18,11 +18,7 @@
 **Each project idea will allow you to explore different aspects of backend development, including API design, authentication, data processing, scalability, and performance optimization. Let’s delve into the details of each project:**
 **Note: You can build any of these projects in different framework or language.**
 
-- Text based read log
-  - Should allow entry of books currently being read, wishlist, books read
-  - Configurable alarm, and whatsapp message to record page number of books currently being read, throw reminders for spaced repetitions of read books
-  - Should remember day wise data entered
-  - Should provide API to fetch all data
+- Markdown based record log
 
 - Integrated note taking
 
