@@ -2,7 +2,6 @@
 
 - Markdown based record log
 - Integrated note taking
-- URL storage & renderer
 - RESTful API with Authentication and Authorization
 - Task Scheduling and Background Jobs with a Job Queue
 - Real-time Chat Application with WebSockets
@@ -21,8 +20,6 @@
 - Markdown based record log
 
 - Integrated note taking
-
-- URL storage & renderer
 
 - RESTful API with Authentication and Authorization: Develop a RESTful API using frameworks like Express or Django, incorporating authentication and authorization mechanisms to secure the endpoints.
 
