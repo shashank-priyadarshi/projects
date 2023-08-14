@@ -32,10 +32,6 @@ name: "StackHawk"
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  schedule:
-    - cron: '22 12 * * 3'
 
 permissions:
   contents: read
