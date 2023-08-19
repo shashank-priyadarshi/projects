@@ -25,8 +25,6 @@ func routes(app *newrelic.Application) *mux.Router {
 	r.HandleFunc(newrelic.WrapHandleFunc(app, "/graphql", graphqlHandler)).Methods("POST")
 	// TODO:
 	r.HandleFunc(newrelic.WrapHandleFunc(app, "/credentials", credentials)).Methods("POST")
-	// TODO: send email about new schedule request to sender and receiver, with available a list of available timings
-	r.HandleFunc(newrelic.WrapHandleFunc(app, "/schedule", writeNewSchedule)).Methods("POST")
 
 	// TODO: more sensible name, decide what data to return
 	r.HandleFunc(newrelic.WrapHandleFunc(app, "/githubdata", returnGitHubData)).Methods("POST").Handler(routeHandler.AuthMiddleware(http.HandlerFunc(returnGitHubData)))

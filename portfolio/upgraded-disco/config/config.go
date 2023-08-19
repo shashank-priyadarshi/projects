@@ -23,9 +23,8 @@ type Configuration struct {
 	Collections
 }
 type Ports struct {
-	Server   string
-	GitHub   string
-	Schedule string
+	Server string
+	GitHub string
 }
 type NewRelic struct {
 	Application string
@@ -35,7 +34,6 @@ type NewRelic struct {
 type Collections struct {
 	GITHUBDATA string
 	GRAPHDATA  string
-	SCHEDULE   string
 }
 
 func FetchConfig() Configuration {
@@ -50,14 +48,12 @@ func FetchConfig() Configuration {
 			ALLOWEDORIGIN:  "http://:4200",
 			SECRETKEY:      fetchSecretKey(),
 			Ports: Ports{
-				Server:   "8085",
-				GitHub:   "8086",
-				Schedule: "8087",
+				Server: "8085",
+				GitHub: "8086",
 			},
 			Collections: Collections{
 				GITHUBDATA: "g",
 				GRAPHDATA:  "gr",
-				SCHEDULE:   "s",
 			},
 			NewRelic: NewRelic{
 				Application: "",
@@ -76,14 +72,12 @@ func FetchConfig() Configuration {
 		SERVERORIGIN:   fmt.Sprintf("http://localhost:%v", os.Getenv("SERVER_PORT")),
 		SECRETKEY:      fetchSecretKey(),
 		Ports: Ports{
-			Server:   os.Getenv("SERVER_PORT"),
-			GitHub:   os.Getenv("GITHUB_PORT"),
-			Schedule: os.Getenv("SCHEDULE_PORT"),
+			Server: os.Getenv("SERVER_PORT"),
+			GitHub: os.Getenv("GITHUB_PORT"),
 		},
 		Collections: Collections{
 			GITHUBDATA: os.Getenv("GITHUB"),
 			GRAPHDATA:  os.Getenv("GRAPH"),
-			SCHEDULE:   os.Getenv("SCHEDULE"),
 		},
 		NewRelic: NewRelic{
 			Application: os.Getenv("NEWRELIC_APP"),
