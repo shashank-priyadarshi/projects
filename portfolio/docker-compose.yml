@@ -16,19 +16,19 @@ services:
     command: ["/bin/bash", "-c", "source /app/tmp-vars.sh && air"]
     restart: always
     
-  angular-dev:
-    build:
-      context: ./portfolio-core-ui
-      dockerfile: Dockerfile
-    volumes:
-      - ./portfolio-core-ui:/app
-      - /app/node_modules
-    networks:
-      - common
-    ports:
-      - "4200:4200"
-    command: npm run start -- --host 0.0.0.0
-    restart: always
+  # angular-dev:
+  #   build:
+  #     context: ./portfolio-core-ui
+  #     dockerfile: Dockerfile;
+  #   volumes:
+  #     - ./portfolio-core-ui:/app
+  #     - /app/node_modules
+  #   networks:
+  #     - common
+  #   ports:
+  #     - "4200:4200"
+  #   command: npm run start -- --host 0.0.0.0
+  #   restart: always
 
 networks:
   common:

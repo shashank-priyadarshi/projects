@@ -1,4 +1,4 @@
-FROM golang:1.20 as builder
+FROM golang:1.21 as builder
 # Define build env
 ENV GOOS linux
 ENV CGO_ENABLED 0
@@ -12,7 +12,6 @@ RUN go install github.com/cosmtrek/air@latest
 COPY . .
 # Build app
 #RUN go build -o app ./
-#EXPOSE 10000
 
 #FROM alpine:3.15 as production
 ## Add certificates
@@ -21,7 +20,5 @@ COPY . .
 #RUN apk add git
 ## Copy built binary from builder
 #COPY --from=builder app .
-## Expose port
-#EXPOSE 10000
 ## Exec built binary
 #CMD ./app

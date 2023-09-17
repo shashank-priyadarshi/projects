@@ -28,7 +28,6 @@
     "@cypress/schematic": "^2.5.0",
     "@ng-matero/extensions": "^15.0.2",
     "@nguniversal/express-engine": "^15.1.0",
-    "@swimlane/ngx-charts": "^20.4.1",
     "ngx-chess-board": "^2.2.3",
     "rxjs": "~7.5.0",
     "source-map-explorer": "^2.5.3",
@@ -60,6 +59,6 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "tslib": "^2.5.0",
     "typescript": "~4.9.4",
-    "webpack-bundle-analyzer": "^4.8.0"
+    "webpack-bundle-analyzer": "^4.9.1"
   }
 }

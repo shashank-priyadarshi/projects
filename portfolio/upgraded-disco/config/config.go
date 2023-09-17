@@ -12,6 +12,7 @@ import (
 type Configuration struct {
 	SQLURI         string
 	MongoURI       string
+	RedisURI       string
 	DBNAME         string
 	SERVERORIGIN   string
 	ALLOWEDORIGIN  string
@@ -41,6 +42,7 @@ func FetchConfig() Configuration {
 		return Configuration{
 			SQLURI:         "root@tcp(mysql:3306)/db",
 			MongoURI:       "mongodb://mongodb:27017/test",
+			RedisURI:       "redis://test@localhost:6379/",
 			DBNAME:         "test",
 			SERVERORIGIN:   "http://0.0.0.0:8085",
 			GITHUBTOKEN:    os.Getenv("GH"),
@@ -66,6 +68,7 @@ func FetchConfig() Configuration {
 		DBNAME:         os.Getenv("DB_NAME"),
 		SQLURI:         os.Getenv("SQL_URI"),
 		MongoURI:       os.Getenv("MONGO_URI"),
+		RedisURI:       os.Getenv("REDIS_URI"),
 		GITHUBTOKEN:    os.Getenv("GITHUB_TOKEN"),
 		ALLOWEDORIGIN:  os.Getenv("ALLOWED_ORIGIN"),
 		GITHUBUSERNAME: os.Getenv("GITHUB_USERNAME"),

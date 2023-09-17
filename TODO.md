@@ -1,18 +1,24 @@
 # Project Ideas
 
-- Markdown based record log
-- Integrated note taking
-- RESTful API with Authentication and Authorization
-- Task Scheduling and Background Jobs with a Job Queue
-- Real-time Chat Application with WebSockets
-- Microservices Architecture with Communication Protocols
-- Scalable and Fault-Tolerant Distributed Systems
-- Building a Content Delivery Network (CDN)
-- Implementing a Caching Layer for Performance Optimization
-- Designing and Optimizing Relational Database Schemas
-- Building a Web Scraping and Data Processing Service
-- Creating an Analytics Dashboard with Data Visualization
-- Clone: StreamYard, Google Docs, Google Meet, Google Drive, LeetCode
+- TODO: Markdown based record log
+- TODO: Integrated note taking
+- TODO: Supply Chain Management System
+- TODO: Asset Tokenization Platform
+- TODO: Decentralized Voting System
+- TODO: Trade Finance Platform
+- TODO: Healthcare Data Exchange
+- TODO: Web and Android based TOTP generator
+- TODO: RESTful API with Authentication and Authorization
+- TODO: Task Scheduling and Background Jobs with a Job Queue
+- TODO: Real-time Chat Application with WebSockets
+- TODO: Microservices Architecture with Communication Protocols
+- TODO: Scalable and Fault-Tolerant Distributed Systems
+- TODO: Building a Content Delivery Network (CDN)
+- TODO: Implementing a Caching Layer for Performance Optimization
+- TODO: Designing and Optimizing Relational Database Schemas
+- TODO: Building a Web Scraping and Data Processing Service
+- TODO: Creating an Analytics Dashboard with Data Visualization
+- TODO: Clone: StreamYard, Google Docs, Google Meet, Google Drive, LeetCode
 
 **Each project idea will allow you to explore different aspects of backend development, including API design, authentication, data processing, scalability, and performance optimization. Let’s delve into the details of each project:**
 **Note: You can build any of these projects in different framework or language.**
@@ -20,6 +26,16 @@
 - Markdown based record log
 
 - Integrated note taking
+
+- Supply Chain Management System: Build a decentralized supply chain management system using Hyperledger Fabric. This project will involve creating smart contracts to track and verify the movement of goods, managing identities and permissions, and implementing a user-friendly interface for participants to interact with the system.
+
+- Asset Tokenization Platform: Develop an asset tokenization platform using Hyperledger Fabric. This project will involve creating smart contracts to represent and manage digital assets, implementing a token issuance and transfer mechanism, and building a secure and scalable infrastructure for asset tokenization.
+
+- Decentralized Voting System: Create a decentralized voting system using Hyperledger Fabric. This project will involve designing smart contracts to handle the voting process, implementing identity management and authentication mechanisms, and building a secure and transparent platform for conducting elections.
+
+- Trade Finance Platform: Build a trade finance platform using Hyperledger Fabric. This project will involve creating smart contracts to facilitate trade finance transactions, implementing a decentralized ledger for tracking and verifying trade documents, and integrating with external systems for payment processing and risk assessment.
+
+- Healthcare Data Exchange: Develop a healthcare data exchange platform using Hyperledger Fabric. This project will involve designing smart contracts to handle the secure exchange of medical records, implementing privacy and consent management mechanisms, and building a scalable infrastructure for healthcare data interoperability.
 
 - RESTful API with Authentication and Authorization: Develop a RESTful API using frameworks like Express or Django, incorporating authentication and authorization mechanisms to secure the endpoints.
 

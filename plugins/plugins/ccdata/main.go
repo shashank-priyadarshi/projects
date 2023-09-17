@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"plugins/mongo"
 	"strings"
 
 	logger "github.com/rs/zerolog/log"
@@ -63,10 +64,10 @@ func pushDataToDB(gameData []AssortedGamePGN) (err error) {
 		}
 
 		// Write the batch of games to the "games" collection
-		// if err = mongo.WriteDataToCollection(os.Getenv("GAME_COLLECTION"), struct{ Games []AssortedGamePGN }{Games: gameData[i:index]}); err != nil {
-		// 	// Log error and exit program
-		// 	logger.Error().Err(err).Msgf("error while writing objects %v to %v", i, index)
-		// }
+		if err = mongo.WriteDataToCollection(os.Getenv("GAME_COLLECTION"), struct{ Games []AssortedGamePGN }{Games: gameData[i:index]}); err != nil {
+			// Log error and exit program
+			logger.Error().Err(err).Msgf("error while writing objects %v to %v", i, index)
+		}
 	}
 	return
 }

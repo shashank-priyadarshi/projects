@@ -13,4 +13,4 @@
 - "https://www.alexedwards.net/blog/interfaces-explained#useful-interface-types": "https://www.alexedwards.net/blog/interfaces-explained#useful-interface-types"
 - "https://leadership.garden/onboarding-engineers/?utm_source=blog.quastor.org&utm_medium=referral&utm_campaign=how-facebook-keeps-millions-of-servers-synced": "https://leadership.garden/onboarding-engineers/?utm_source=blog.quastor.org&utm_medium=referral&utm_campaign=how-facebook-keeps-millions-of-servers-synced"
 - "https://blog.logrocket.com/angular-modules-best-practices-for-structuring-your-app/#whatareangularmodules": "https://blog.logrocket.com/angular-modules-best-practices-for-structuring-your-app/#whatareangularmodules"
-- 
+- "https://support.google.com/mail/answer/7190?hl=en": "https://support.google.com/mail/answer/7190?hl=en"
