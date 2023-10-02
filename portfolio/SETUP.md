@@ -1,4 +1,0 @@
-- Start services using [docker-compose.yaml]()
-- Setup databases and collections in MongoDB
-- Setup database and tables in MySQL
-- Run backend and frontend services using [air]() and [npm]() respectively
