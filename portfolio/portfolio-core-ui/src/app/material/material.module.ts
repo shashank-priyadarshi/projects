@@ -19,7 +19,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 
 import { MtxTooltipModule } from '@ng-matero/extensions/tooltip';
-import { NgxChessBoardModule } from "ngx-chess-board";
 
 let MATERIAL_MODULES = [
   MatToolbarModule,
@@ -43,7 +42,7 @@ let MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: [MATERIAL_MODULES, MtxTooltipModule, NgxChessBoardModule],
-  exports: [MATERIAL_MODULES, MtxTooltipModule, NgxChessBoardModule],
+  imports: [MATERIAL_MODULES, MtxTooltipModule],
+  exports: [MATERIAL_MODULES, MtxTooltipModule],
 })
 export class MaterialModule {}
