@@ -1,31 +1,29 @@
-# RECORD_LOG
+# Markdown Based Record Logging Application
 
 ## Requirements
 
 - Markdown based record log
-  - Parse table of contents
-  - Allow addition, editing and removal of entries
-  - Structure extracted text in JSON & CSV
-  - Allow tag based search and full text search
-  - Allow exporting/importing logs to/from JSON and CSV files
+  - Parse markdown
+  - Export data to NoSQL db
+  - Update markdown & db with new data
+  - Update db on markdown update
+  - TODO: Edit/remove data from markdown
+  - TODO: Allow tag based search and full text search
+  - TODO: Allow exporting/importing HTML/JSON/CSV/YAML/TOML files
+  - TODO: Structure extracted text in JSON & CSV
 
 ## Design
 
 ### High Level Design
 
-- Parse a markdown written in predefined format
-- Save to MongoDB
-- Enable CRUD
+![High Level Design](markdown_app.png)
 
 ### Low Level Design
 
-- In a common database in MongoDB, create a collection for each document, e.g. books_subitems
-- Create a master collection that contains a list of all documents' headings and their table of contents
-- subitems contains subitem lists as array of objects
-- Write CRUD functions that edit the original markdown file as well the data in DB
-- Expose CRUD through APIs
-- Create an AST of the markdown file, save to MongoDB: maybe
-  
+- Parse markdown
+- Each entry should have
+- TODO: Build parser
+
 ## Use Cases
 
 - Read log
