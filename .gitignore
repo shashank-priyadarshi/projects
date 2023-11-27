@@ -1,11 +1,3 @@
-# chesscom-data
-*.json
-.exe
-
-# github-integration
-target
-Cargo.lock
-
 # grpc
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
@@ -29,20 +21,6 @@ Cargo.lock
 # Go workspace file
 go.work
 
-# notion-extension
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-
-# Test binary, built with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
@@ -54,16 +32,12 @@ package-lock.json
 # portfolio
 tmp-vars.sh
 
-# portfolio-core-ui
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
 # Compiled output
 /tmp
 /out-tsc
 /bazel-out
 
 # Node
-/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -103,9 +77,4 @@ Thumbs.db
 
 # upgraded-disco
 tmp
-*.json
-.vscode/
-coverage.out
-*.exe
 cloned-repos/
-portfolio/index.html
