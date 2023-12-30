@@ -1,5 +1,0 @@
-normalizeURL() {}
-
-module.exports = {
-normalizeURL
-}

@@ -12,6 +12,7 @@ import (
 type Configuration struct {
 	SQLURI         string
 	MongoURI       string
+	RedisURI       string
 	DBNAME         string
 	SERVERORIGIN   string
 	ALLOWEDORIGIN  string
@@ -23,10 +24,8 @@ type Configuration struct {
 	Collections
 }
 type Ports struct {
-	Server   string
-	Todos    string
-	GitHub   string
-	Schedule string
+	Server string
+	GitHub string
 }
 type NewRelic struct {
 	Application string
@@ -34,36 +33,29 @@ type NewRelic struct {
 	LogForward  bool
 }
 type Collections struct {
-	BIODATA    string
 	GITHUBDATA string
-	TODOS      string
 	GRAPHDATA  string
-	SCHEDULE   string
 }
 
 func FetchConfig() Configuration {
 	if strings.EqualFold("0", os.Getenv("SETUP")) {
 		return Configuration{
-			SQLURI:         "root@tcp(localhost:3306)/db",
-			MongoURI:       "mongodb://localhost:27017/test",
+			SQLURI:         "root@tcp(mysql:3306)/db",
+			MongoURI:       "mongodb://mongodb:27017/test",
+			RedisURI:       "redis://test@localhost:6379/",
 			DBNAME:         "test",
-			SERVERORIGIN:   "*",
+			SERVERORIGIN:   "http://0.0.0.0:8085",
 			GITHUBTOKEN:    os.Getenv("GH"),
 			GITHUBUSERNAME: "shashank-priyadarshi",
-			ALLOWEDORIGIN:  "*",
+			ALLOWEDORIGIN:  "http://:4200",
 			SECRETKEY:      fetchSecretKey(),
 			Ports: Ports{
-				Server:   "8085",
-				Todos:    "8086",
-				GitHub:   "8087",
-				Schedule: "8088",
+				Server: "8085",
+				GitHub: "8086",
 			},
 			Collections: Collections{
-				BIODATA:    "b",
 				GITHUBDATA: "g",
-				TODOS:      "t",
 				GRAPHDATA:  "gr",
-				SCHEDULE:   "s",
 			},
 			NewRelic: NewRelic{
 				Application: "",
@@ -76,23 +68,19 @@ func FetchConfig() Configuration {
 		DBNAME:         os.Getenv("DB_NAME"),
 		SQLURI:         os.Getenv("SQL_URI"),
 		MongoURI:       os.Getenv("MONGO_URI"),
+		RedisURI:       os.Getenv("REDIS_URI"),
 		GITHUBTOKEN:    os.Getenv("GITHUB_TOKEN"),
 		ALLOWEDORIGIN:  os.Getenv("ALLOWED_ORIGIN"),
 		GITHUBUSERNAME: os.Getenv("GITHUB_USERNAME"),
 		SERVERORIGIN:   fmt.Sprintf("http://localhost:%v", os.Getenv("SERVER_PORT")),
 		SECRETKEY:      fetchSecretKey(),
 		Ports: Ports{
-			Server:   os.Getenv("SERVER_PORT"),
-			Todos:    os.Getenv("TODOS_PORT"),
-			GitHub:   os.Getenv("GITHUB_PORT"),
-			Schedule: os.Getenv("SCHEDULE_PORT"),
+			Server: os.Getenv("SERVER_PORT"),
+			GitHub: os.Getenv("GITHUB_PORT"),
 		},
 		Collections: Collections{
-			BIODATA:    os.Getenv("BIO"),
 			GITHUBDATA: os.Getenv("GITHUB"),
-			TODOS:      os.Getenv("TODOS"),
 			GRAPHDATA:  os.Getenv("GRAPH"),
-			SCHEDULE:   os.Getenv("SCHEDULE"),
 		},
 		NewRelic: NewRelic{
 			Application: os.Getenv("NEWRELIC_APP"),

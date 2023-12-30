@@ -1,0 +1,61 @@
+syntax="proto3";
+
+
+import "google/protobuf/any.proto";
+import "google/protobuf/empty.proto";
+
+package proto;
+
+option go_package = "./todo";
+
+service MarkdownApplication{
+    rpc List(google.protobuf.Empty) returns (Items);
+    rpc Parse(google.protobuf.Empty) returns(Error);
+    rpc Add(Items) returns(Error);
+    rpc Edit(Items) returns(Error);
+    rpc Delete(UIDs) returns(Error);
+}
+
+message Error{
+    string message = 1;
+    repeated google.protobuf.Any details = 2;
+}
+
+message UIDs{
+    repeated string uid = 1;
+}
+
+message Items{
+    repeated Item items = 1;
+}
+
+message Item{
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    Status status = 4;
+    Date date = 5;
+    repeated string tags = 6;
+}
+
+enum Status{
+    NEW = 0;
+    IN_PROGRESS = 1;
+    DONE = 2;
+    PAUSED = 3;
+    RESTARTED = 4;
+    CANCELED = 5;
+}
+
+message Date{
+    string added = 1;
+    string started = 2;
+    string completed = 3;
+    string due = 4;
+    repeated Restart restart = 5;
+}
+
+message Restart{
+    string paused = 1;
+    string restarted = 2;
+}

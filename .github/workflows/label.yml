@@ -6,7 +6,10 @@
 # https://github.com/actions/labeler
 
 name: Labeler
-on: [pull_request_target]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   label:
@@ -19,4 +22,4 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        repo-token: "${{ secrets.GH_TOKEN }}"

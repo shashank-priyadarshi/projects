@@ -1,0 +1,8 @@
+<div class="parent">
+<div>Traffic Light Simulator</div>
+<div class="traffic-light">
+    <div class="circle" [ngClass]="red && !yellow && !green ? 'red' : 'grey'"></div>
+    <div class="circle" [ngClass]="!red && yellow && !green ? 'yellow' : 'grey'"></div>
+    <div class="circle" [ngClass]="!red && !yellow && green ? 'green' : 'grey'"></div>
+  </div>
+</div>
