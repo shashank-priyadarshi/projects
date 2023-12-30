@@ -4,6 +4,7 @@
 - TODO: Markdown based record log
 - TODO: Clone: StreamYard, Google Docs, Google Meet, Google Drive, LeetCode: [Repo link](https://github.com/hkirat/project-ideas-v2) for requirements and design
 - TODO: YouTube Layer, Internationalization As A Service, Adding OpenAPI to Backend, Adding Tests to Codebase:[Video Link](https://www.youtube.com/watch?v=UYySvyc4M68)
+- TODO: Automated Trading Bot, Sentiment Analysis, Distributed Voting System, Online Multiplayer Game, Computer Vision related Application:[Video Link](https://www.youtube.com/watch?v=V1hjSeSF4xg)
 - TODO: Clone: Whiteboard App, Vimeo Clone, Online Poker Player, Color Theme Generator, Framer Clone, LLM Aggregator, GSoc Issue Tracker Structured eetCode, Blind Clone for Students, Airdrop Tracker on Blockchains, Cross Chain Portfolio Tracker, PayTM Box for Blockchain, Payment Gateway for Crypto: [Video Link](https://www.youtube.com/watch?v=P6hw2tsc_f4)
 - TODO: Real-time Chat Application with WebSockets: Build a real-time chat application using WebSockets and frameworks like Socket.io or Django Channels, enabling instant messaging between users.
 - TODO: Building a Content Delivery Network (CDN): Create a CDN using technologies like Nginx or Varnish Cache to efficiently deliver static assets and improve the performance of web applications.
