@@ -7,7 +7,7 @@ require (
 	github.com/rs/zerolog v1.29.1
 	github.com/samber/lo v1.38.1
 	google.golang.org/grpc v1.56.3
-	google.golang.org/protobuf v1.30.0
+	google.golang.org/protobuf v1.33.0
 )
 
 require (
