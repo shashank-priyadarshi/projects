@@ -7,25 +7,23 @@ on:
     branches: [ "main" ]
 
 permissions:
-  actions: [ "read" ]
-  issues: [ "write" ]
-  checks: [ "write" ]
-  security-events: [ "write" ]
-  pull-requests: [ "read", "write" ]
-  contents: [ "read", "write" ]
+  actions: "read"
+  issues: "write"
+  checks: "write"
+  security-events: "write"
+  pull-requests: "write"
+  contents: "write"
 
 jobs:
-  stale: # Mark stale issues and pull requests
-
+  workflows:
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
-
     permissions:
-      actions: [ "read" ]
-      issues: [ "write" ]
-      checks: [ "write" ]
-      security-events: [ "write" ]
-      pull-requests: [ "read", "write" ]
-      contents: [ "read", "write" ]
+      actions: "read"
+      issues: "write"
+      checks: "write"
+      security-events: "write"
+      pull-requests: "write"
+      contents: "write" 
 
     steps:
     # Run pr agent on every pull request, respond to user comments
@@ -192,7 +190,7 @@ jobs:
     # This workflow warns and then closes issues and PRs that have had no activity for a specified amount of time.
     # For more information, see:
     # https://github.com/actions/stale
-    - 'Stale manager'
+    - name: 'Stale manager'
       uses: actions/stale@v5
       with:
         repo-token: ${{ secrets.GH_TOKEN }}
