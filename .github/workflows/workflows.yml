@@ -7,14 +7,12 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: read
-  pull-requests: read
-  actions: read
-  issues: write
-  contents: write
-  pull-requests: write
-  checks: write
-  security-events: write
+  actions: [ "read" ]
+  issues: [ "write" ]
+  checks: [ "write" ]
+  security-events: [ "write" ]
+  pull-requests: [ "read", "write" ]
+  contents: [ "read", "write" ]
 
 jobs:
   stale: # Mark stale issues and pull requests
@@ -22,13 +20,12 @@ jobs:
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
 
     permissions:
-      contents: read
-      actions: read
-      issues: write
-      contents: write
-      pull-requests: write
-      checks: write
-      security-events: write
+      actions: [ "read" ]
+      issues: [ "write" ]
+      checks: [ "write" ]
+      security-events: [ "write" ]
+      pull-requests: [ "read", "write" ]
+      contents: [ "read", "write" ]
 
     steps:
     # Run pr agent on every pull request, respond to user comments
@@ -58,17 +55,10 @@ jobs:
     # found in ECMAScript/JavaScript code.
     # More details at https://github.com/eslint/eslint
     # and https://eslint.org
-    - name: Install ESLint
+    - name: Install & Run ESLint
       run: |
-        npm install eslint@8.10.0
-        npm install @microsoft/eslint-formatter-sarif@2.1.7
-
-    - name: Run ESLint
-      run: npx eslint .
-        --config .eslintrc.js
-        --ext .js,.jsx,.ts,.tsx
-        --format @microsoft/eslint-formatter-sarif
-        --output-file eslint-results.sarif
+        npm install eslint@8.10.0 @microsoft/eslint-formatter-sarif@2.1.7
+        npx eslint . --config .eslintrc.js --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
       continue-on-error: true
 
     - name: Upload analysis results to GitHub
