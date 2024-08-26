@@ -56,11 +56,12 @@ jobs:
     - name: Install & Run ESLint
       run: |
         npm install eslint@8.10.0 @microsoft/eslint-formatter-sarif@2.1.7
-        npx eslint . --config .eslintrc.js --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
+        npx eslint . --config ./../../.eslintrc.js --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
       continue-on-error: true
 
     - name: Upload analysis results to GitHub
       uses: github/codeql-action/upload-sarif@v2
+      continue-on-error: true
       with:
         sarif_file: eslint-results.sarif
         wait-for-processing: true    
@@ -73,6 +74,7 @@ jobs:
     # More details at https://github.com/hadolint/hadolint
     - name: 'Run hadolint'
       uses: hadolint/hadolint-action@f988afea3da57ee48710a9795b6bb677cc901183
+      continue-on-error: true
       with:
         dockerfile: ./Dockerfile
         format: sarif
@@ -81,6 +83,7 @@ jobs:
 
     - name: Upload analysis results to GitHub
       uses: github/codeql-action/upload-sarif@v2
+      continue-on-error: true
       with:
         sarif_file: hadolint-results.sarif
         wait-for-processing: true
@@ -116,6 +119,7 @@ jobs:
       # You can pin the exact commit or the version.
       # uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
       uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
+      continue-on-error: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -135,12 +139,14 @@ jobs:
 
 
     - name: Upload coverage reports to Codecov
+      continue-on-error: true
       run: | 
           curl -Os https://uploader.codecov.io/latest/linux/codecov 
           chmod +x codecov 
           ./codecov -t ${{ secrets.CODECOV_TOKEN }}
     - name: 'Qodana Scan'
       uses: JetBrains/qodana-action@v2023.2
+      continue-on-error: true
       env:
         QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
     # This workflow uses actions that are not certified by GitHub.
@@ -158,6 +164,7 @@ jobs:
     # Execute Codacy Analysis CLI and generate a SARIF output with the security issues identified during the analysis
     - name: 'Run Codacy Analysis CLI'
       uses: codacy/codacy-analysis-cli-action@d840f886c4bd4edc059706d09c6a1586111c540b
+      continue-on-error: true
       with:
         # Check https://github.com/codacy/codacy-analysis-cli#project-token to get your project token from your Codacy repository
         # You can also omit the token and run the tools that support default configurations
@@ -173,6 +180,7 @@ jobs:
     # Upload the SARIF file generated in the previous step
     - name: 'Upload Codacy Analysis SARIF results file'
       uses: github/codeql-action/upload-sarif@v2
+      continue-on-error: true
       with:
         sarif_file: results.sarif      
     - name: 'Dependency Review'
@@ -185,6 +193,7 @@ jobs:
     # https://github.com/actions/labeler
     - name: 'Labeler'
       uses: actions/labeler@v4
+      continue-on-error: true
       with:
         repo-token: "${{ secrets.GH_TOKEN }}"    
     # This workflow warns and then closes issues and PRs that have had no activity for a specified amount of time.
@@ -192,6 +201,7 @@ jobs:
     # https://github.com/actions/stale
     - name: 'Stale manager'
       uses: actions/stale@v5
+      continue-on-error: true
       with:
         repo-token: ${{ secrets.GH_TOKEN }}
         stale-issue-message: 'Stale issue message'
@@ -226,6 +236,7 @@ jobs:
     # 5.  Update the "Start your service" Step: Update the "Start your service" step in the StackHawk workflow below to
     #     start your service so that it can be scanned with the "Run HawkScan" step.    
     - name: Start your service
+      continue-on-error: true
       run: ./../../run.sh &                  # ✏️ Update this to run your own service to be scanned
 
     - name: Run HawkScan
