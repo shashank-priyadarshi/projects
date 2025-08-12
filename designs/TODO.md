@@ -17,3 +17,24 @@
 - TODO: Healthcare Data Exchange: Develop a healthcare data exchange platform using Hyperledger Fabric. This project will involve designing smart contracts to handle the secure exchange of medical records, implementing privacy and consent management mechanisms, and building a scalable infrastructure for healthcare data interoperability.
 - TODO: Web and Android based TOTP generator
 - TODO: Integrated note taking
+
+  ## [Video](https://www.youtube.com/watch?v=nfIX0Z9K3Q4)
+
+- TODO: DOS Attack Map: A real-time map that monitors and visualizes global DOS attacks
+- TODO: Solution against Loneliness Pandemic Crisis: A free mobile application to help people in the same local area connect and socialize
+- TODO: Network-wide Ad Blocker + VPN: A system for your entire home network that blocks ads and provides a VPN connection
+- TODO: Shazam Clone: A project to create your own version of the popular music recognition app
+- TODO: Minimal and Lightweight Navigation App: A fast and simple navigation app without unnecessary features
+- TODO: Neural Network that Learns to Play Your Game: A project where you build a game and then train a neural network to play it
+- TODO: Learn Linux: The video suggests this as a bonus project to learn about operating systems and related concepts
+- TODO: Transpiler for a Toy Language: A project to create a transpiler that converts a simple, custom-made language into Python
+- TODO: ChatGPT in a Calculator: A fun project to integrate ChatGPT into a calculator using an ESP32 microcontroller
+- TODO: Self-Hosted Personal Cloud Storage: A project to create your own cloud storage using a spare laptop or Raspberry Pi
+- TODO: Raspberry Pi-based Alexa Clone: A DIY voice assistant using a Raspberry Pi
+- TODO: Algorithm Visualizer Sandbox: An interactive tool to visualize different algorithms
+- TODO: Unique Portfolio Website: A project to design a creative and personal portfolio website
+- TODO: Terminal Game: A game that runs entirely within the command-line interface
+- TODO: Recreate or Contribute to a Library: A bonus project to either recreate an existing library or contribute to an open-source one
+- TODO: Music Recommendation Engine: A project for those interested in AI/ML to build a system that recommends music based on its features
+- TODO: Domain Specific Language for Music: A project to create a programming language specifically for creating music
+- TODO: Shader Language Compiler: A challenging project to write a compiler for a shader language
