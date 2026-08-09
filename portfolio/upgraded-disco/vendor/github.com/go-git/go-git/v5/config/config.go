@@ -13,6 +13,7 @@ import (
 
 	"github.com/go-git/go-billy/v5/osfs"
 	"github.com/go-git/go-git/v5/internal/url"
+	"github.com/go-git/go-git/v5/plumbing"
 	format "github.com/go-git/go-git/v5/plumbing/format/config"
 )
 
@@ -60,12 +61,22 @@ type Config struct {
 		CommentChar string
 		// RepositoryFormatVersion identifies the repository format and layout version.
 		RepositoryFormatVersion format.RepositoryFormatVersion
+		// ProtectNTFS controls whether NTFS-specific path protections are
+		// applied (e.g. rejecting .git trailing spaces/periods, alternate
+		// data streams, 8.3 short names). When unset, defaults to true on
+		// Windows.
+		ProtectNTFS OptBool
+		// ProtectHFS controls whether HFS+-specific path protections are
+		// applied (e.g. rejecting .git with Unicode zero-width or
+		// directional characters that HFS+ would normalize away).
+		// When unset, defaults to true on macOS.
+		ProtectHFS OptBool
 	}
 
 	User struct {
-		// Name is the personal name of the author and the commiter of a commit.
+		// Name is the personal name of the author and the committer of a commit.
 		Name string
-		// Email is the email of the author and the commiter of a commit.
+		// Email is the email of the author and the committer of a commit.
 		Email string
 	}
 
@@ -77,9 +88,9 @@ type Config struct {
 	}
 
 	Committer struct {
-		// Name is the personal name of the commiter of a commit.
+		// Name is the personal name of the committer of a commit.
 		Name string
-		// Email is the email of the  the commiter of a commit.
+		// Email is the email of the committer of a commit.
 		Email string
 	}
 
@@ -157,8 +168,8 @@ func ReadConfig(r io.Reader) (*Config, error) {
 }
 
 // LoadConfig loads a config file from a given scope. The returned Config,
-// contains exclusively information fom the given scope. If couldn't find a
-// config file to the given scope, a empty one is returned.
+// contains exclusively information from the given scope. If it couldn't find a
+// config file to the given scope, an empty one is returned.
 func LoadConfig(scope Scope) (*Config, error) {
 	if scope == LocalScope {
 		return nil, fmt.Errorf("LocalScope should be read from the a ConfigStorer")
@@ -251,6 +262,7 @@ const (
 	extensionsSection          = "extensions"
 	fetchKey                   = "fetch"
 	urlKey                     = "url"
+	pushurlKey                 = "pushurl"
 	bareKey                    = "bare"
 	worktreeKey                = "worktree"
 	commentCharKey             = "commentChar"
@@ -264,6 +276,8 @@ const (
 	repositoryFormatVersionKey = "repositoryformatversion"
 	objectFormat               = "objectformat"
 	mirrorKey                  = "mirror"
+	protectNTFSKey             = "protectNTFS"
+	protectHFSKey              = "protectHFS"
 
 	// DefaultPackWindow holds the number of previous objects used to
 	// generate deltas. The value 10 is the same used by git command.
@@ -307,6 +321,14 @@ func (c *Config) unmarshalCore() {
 
 	c.Core.Worktree = s.Options.Get(worktreeKey)
 	c.Core.CommentChar = s.Options.Get(commentCharKey)
+
+	if parsed := parseConfigBool(s.Options.Get(protectNTFSKey)); parsed.IsSet() {
+		c.Core.ProtectNTFS = parsed
+	}
+
+	if parsed := parseConfigBool(s.Options.Get(protectHFSKey)); parsed.IsSet() {
+		c.Core.ProtectHFS = parsed
+	}
 }
 
 func (c *Config) unmarshalUser() {
@@ -377,7 +399,8 @@ func unmarshalSubmodules(fc *format.Config, submodules map[string]*Submodule) {
 		m := &Submodule{}
 		m.unmarshal(sub)
 
-		if m.Validate() == ErrModuleBadPath {
+		if err := m.Validate(); errors.Is(err, ErrModuleBadPath) ||
+			errors.Is(err, ErrModuleBadName) {
 			continue
 		}
 
@@ -433,6 +456,14 @@ func (c *Config) marshalCore() {
 
 	if c.Core.Worktree != "" {
 		s.SetOption(worktreeKey, c.Core.Worktree)
+	}
+
+	if c.Core.ProtectNTFS.IsSet() {
+		s.SetOption(protectNTFSKey, c.Core.ProtectNTFS.FormatBool())
+	}
+
+	if c.Core.ProtectHFS.IsSet() {
+		s.SetOption(protectHFSKey, c.Core.ProtectHFS.FormatBool())
 	}
 }
 
@@ -614,7 +645,7 @@ func (c *RemoteConfig) Validate() error {
 		c.Fetch = []RefSpec{RefSpec(fmt.Sprintf(DefaultFetchRefSpec, c.Name))}
 	}
 
-	return nil
+	return plumbing.NewRemoteHEADReferenceName(c.Name).Validate()
 }
 
 func (c *RemoteConfig) unmarshal(s *format.Subsection) error {
@@ -632,6 +663,7 @@ func (c *RemoteConfig) unmarshal(s *format.Subsection) error {
 
 	c.Name = c.raw.Name
 	c.URLs = append([]string(nil), c.raw.Options.GetAll(urlKey)...)
+	c.URLs = append(c.URLs, c.raw.Options.GetAll(pushurlKey)...)
 	c.Fetch = fetch
 	c.Mirror = c.raw.Options.Get(mirrorKey) == "true"
 
